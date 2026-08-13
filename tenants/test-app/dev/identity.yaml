@@ -1,5 +1,0 @@
-# THROWAWAY - see ../app.yaml's header. Deleted after verification.
-appName: test-app
-gitopsRepoUrl: https://github.com/jfillman/gitops-cluster-dev-tenants.git
-githubOwner: jfillman
-env: dev
