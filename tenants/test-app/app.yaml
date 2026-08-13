@@ -1,0 +1,10 @@
+# THROWAWAY - live-verification of the tenant-onboarding ApplicationSet mechanism
+# (gitops-cluster-dev's 02-argocd-apps/), not a real app. gitopsRepoUrl points at this
+# same repo since it just needs to be a real, resolvable git URL - no real
+# kind-dev/dev/values.yaml is expected to exist there, so the generated deployment
+# Application won't reach Synced/Healthy. That's expected; what's being proven here is
+# ApplicationSet generation + the AppProject sourceRepos/destinations boundary, not a
+# full app deployment. Deleted after verification.
+appName: test-app
+gitopsRepoUrl: https://github.com/jfillman/gitops-cluster-dev-tenants.git
+githubOwner: jfillman
