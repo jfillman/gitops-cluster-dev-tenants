@@ -1,0 +1,4 @@
+appName: widget-service
+gitopsRepoUrl: https://github.com/jfillman/gitops-widget-service.git
+appRepoUrl: https://github.com/jfillman/widget-service.git
+githubOwner: jfillman
