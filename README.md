@@ -29,15 +29,19 @@ tenants/
                          # idp-service-catalog's idp-application chart.
 ```
 
-Both files are written by an `ApplicationEnvironment` XR's Composition (once that XRD
-exists — not built yet), the same way `platform-cicd`'s own
-`tenants/<app>/identity.yaml` is written by its onboarding flow: operator-owned,
-PR-reviewed (lighter bar than `gitops-cluster-dev` itself), minimal — identity and repo
-URLs only, no live config.
+`app.yaml` is written by `NodeJSApplication`'s Composition (`idp-service-catalog`,
+`compositions/nodejsapplication/`) — app-level, create-once, same reasoning that XRD
+already uses for creating its `gitops-<app-name>` repo at bootstrap time (see
+`idp/docs/service-catalog-design.md` Item 1/2). `<env>/identity.yaml` is written by
+`ApplicationEnvironment`'s Composition (that XRD doesn't exist yet). Both follow the same
+shape `platform-cicd`'s own `tenants/<app>/identity.yaml` onboarding flow already uses:
+operator-owned, PR-reviewed (lighter bar than `gitops-cluster-dev` itself), minimal —
+identity and repo URLs only, no live config.
 
 ## Status
 
 Bootstrapped 2026-08-13 alongside `gitops-cluster-dev/02-argocd-apps/`'s two
-ApplicationSets — real infrastructure, not yet fed by a real XRD (`NodeJSApplication`/
-`ApplicationEnvironment` aren't built yet). Live-verified with a throwaway `test-app`
-entry, since removed.
+ApplicationSets — real infrastructure, live-verified at the time with a throwaway
+`test-app` entry, since removed. `app.yaml` is now written for real by `NodeJSApplication`
+(built 2026-08-13, see `idp-service-catalog/xrds/nodejsapplication.yaml`);
+`ApplicationEnvironment` (and therefore `<env>/identity.yaml`) still isn't built.
