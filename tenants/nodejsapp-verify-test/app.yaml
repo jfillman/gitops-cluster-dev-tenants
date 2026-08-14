@@ -1,4 +1,0 @@
-appName: nodejsapp-verify-test
-gitopsRepoUrl: https://github.com/jfillman/gitops-nodejsapp-verify-test.git
-appRepoUrl: https://github.com/jfillman/nodejsapp-verify-test.git
-githubOwner: jfillman
