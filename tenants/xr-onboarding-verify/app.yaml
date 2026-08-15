@@ -1,0 +1,4 @@
+appName: xr-onboarding-verify
+gitopsRepoUrl: https://github.com/jfillman/gitops-xr-onboarding-verify.git
+appRepoUrl: https://github.com/jfillman/xr-onboarding-verify.git
+githubOwner: jfillman
