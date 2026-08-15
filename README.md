@@ -51,4 +51,6 @@ Bootstrapped 2026-08-13 alongside `gitops-cluster-dev/02-argocd-apps/`'s two
 ApplicationSets — real infrastructure, live-verified at the time with a throwaway
 `test-app` entry, since removed. `app.yaml` is now written for real by `NodeJSApplication`
 (built 2026-08-13, see `idp-service-catalog/xrds/nodejsapplication.yaml`);
-`ApplicationEnvironment` (and therefore `<env>/identity.yaml`) still isn't built.
+`<env>/identity.yaml` is now written for real by `ApplicationEnvironment` (built
+2026-08-15, see `idp-service-catalog/xrds/applicationenvironment.yaml`) — matches
+the shape documented above exactly (`appName`/`gitopsRepoUrl`/`githubOwner`/`env`).
