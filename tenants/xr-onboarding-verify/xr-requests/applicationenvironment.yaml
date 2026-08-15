@@ -1,0 +1,9 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: ApplicationEnvironment
+metadata:
+  name: xr-onboarding-verify-kind-prod-verify
+  namespace: app-xr-onboarding-verify-cicd
+spec:
+  appName: xr-onboarding-verify
+  cluster: kind-prod
+  env: verify
