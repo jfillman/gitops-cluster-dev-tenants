@@ -1,0 +1,11 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: NodeJSApplication
+metadata:
+  name: xr-onboarding-verify
+  namespace: app-xr-onboarding-verify-cicd
+spec:
+  description: Throwaway app live-verifying the xr-requests/ GitOps onboarding path.
+  nodeVersion: "20"
+  packageManager: npm
+  port: 8080
+  visibility: private
