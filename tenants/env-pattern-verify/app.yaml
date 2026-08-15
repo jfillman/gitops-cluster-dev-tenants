@@ -1,0 +1,4 @@
+appName: env-pattern-verify
+gitopsRepoUrl: https://github.com/jfillman/gitops-env-pattern-verify.git
+appRepoUrl: https://github.com/jfillman/env-pattern-verify.git
+githubOwner: jfillman
