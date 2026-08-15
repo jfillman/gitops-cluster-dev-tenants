@@ -1,9 +1,0 @@
-apiVersion: catalog.idp.io/v1alpha1
-kind: ApplicationEnvironment
-metadata:
-  name: deadlock-repro-kind-prod-verify
-  namespace: app-deadlock-repro-cicd
-spec:
-  appName: deadlock-repro
-  cluster: kind-prod
-  env: verify
