@@ -14,12 +14,19 @@ This repo only holds the data they read.
 ```
 tenants/
   <app-name>/
-    app.yaml            # appName, gitopsRepoUrl, githubOwner - one per app, shared
-                         # across every env this app has on this cluster. Read by the
-                         # tenant-appprojects ApplicationSet (one per app, not per env)
-                         # to build that app's AppProject: sourceRepos [idp-service-
-                         # catalog, this app's own gitopsRepoUrl], destinations scoped
-                         # to app-<appName>-* namespaces on this cluster only.
+    app.yaml            # appName, gitopsRepoUrl, appRepoUrl, githubOwner - one per app,
+                         # shared across every env this app has on this cluster. Read by
+                         # the tenant-appprojects ApplicationSet (one per app, not per
+                         # env) to build that app's AppProject: sourceRepos
+                         # [idp-service-catalog, this app's own gitopsRepoUrl],
+                         # destinations scoped to app-<appName>-* namespaces on this
+                         # cluster only - appRepoUrl has no consumer in this repo's own
+                         # ApplicationSets, carried for the still-stubbed CICD-onboarding
+                         # step (platform-cicd-on-kind-dev migration) the same way
+                         # platform-cicd's own tenants/<app>/identity.yaml already uses
+                         # its own appRepoUrl (non-optional there) to fetch cicd.yaml
+                         # live from the src repo - same field name, deliberately, to
+                         # minimize friction once that migration lands.
     <env>/
       identity.yaml      # appName, gitopsRepoUrl, githubOwner, env - self-contained,
                          # deliberately duplicating app.yaml's fields rather than
