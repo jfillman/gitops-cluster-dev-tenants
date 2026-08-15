@@ -1,0 +1,4 @@
+appName: appenv-verify-test
+gitopsRepoUrl: https://github.com/jfillman/gitops-appenv-verify-test.git
+githubOwner: jfillman
+env: dev
