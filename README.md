@@ -34,10 +34,18 @@ tenants/
     app.yaml            # appName, gitopsRepoUrl, appRepoUrl, githubOwner - one per app,
                          # shared across every env this app has on this cluster. Read by
                          # the tenant-appprojects ApplicationSet (one per app, not per
-                         # env) to build that app's AppProject: sourceRepos
+                         # env) to build, per app: the upper-env AppProject (sourceRepos
                          # [idp-service-catalog, this app's own gitopsRepoUrl],
-                         # destinations scoped to app-<appName>-* namespaces on this
-                         # cluster only.
+                         # destinations app-<appName>-* on this cluster), a SECOND,
+                         # narrower AppProject for the dev-cluster-only self-service
+                         # lower-env tier (sourceRepos [idp-service-catalog, this app's
+                         # own appRepoUrl - never gitopsRepoUrl] - idp/docs/
+                         # gitops-strategy.md §10, built 2026-08-16), and a per-app
+                         # ApplicationSet whose own git generator watches THIS app's own
+                         # appRepoUrl for platform/envs/*.yaml - the mechanism that
+                         # actually provisions a dev env's namespace, since
+                         # ApplicationEnvironment (below) structurally never targets this
+                         # cluster.
     identity.yaml        # platformIdentity: {appName, type, gitopsRepoUrl, appRepoUrl,
                          # githubOwner, catalogNamespace} - CICD PIPELINE onboarding,
                          # NOT deployment (see <env>/identity.yaml below for that). Read
@@ -115,3 +123,14 @@ xr-request deadlocks against the `Usage` it composes (ArgoCD prune vs. the `Usag
 controller's own finalizer wait) — confirmed twice, not yet fixed. See the `xr-requests`
 `ApplicationSet`'s own header comment in `gitops-cluster-dev` for the full mechanism and
 recovery steps.
+
+**`app.yaml`'s lower-env tier (idp/docs/gitops-strategy.md §10) — built and
+live-verified 2026-08-16.** `tenant-appprojects` now also renders a second AppProject
+and a per-app ApplicationSet per app — this repo itself is unchanged by that (the
+lower-env tier reads `platform/envs/*.yaml` live from each app's own src repo, never
+from here), but `app.yaml`'s own consumer count went from one to three. Live-verified
+end to end on the real `nodejs-demo-app` entry already in this repo: a real
+`platform/envs/dev.yaml` commit to that app's own repo provisioned
+`app-nodejs-demo-app-dev` for real, and the new AppProject's rejection boundary was
+proven with two throwaway `Application`s. See `idp/docs/gitops-strategy.md` §10 for
+the full mechanism, including three real bugs hit building it.
