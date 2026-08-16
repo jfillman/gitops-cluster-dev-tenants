@@ -1,7 +1,0 @@
-platformIdentity:
-  appName: cicd-redirect-verify
-  type: app
-  gitopsRepoUrl: https://github.com/jfillman/gitops-cicd-redirect-verify.git
-  appRepoUrl: https://github.com/jfillman/cicd-redirect-verify.git
-  githubOwner: jfillman
-  catalogNamespace: platform-catalog
