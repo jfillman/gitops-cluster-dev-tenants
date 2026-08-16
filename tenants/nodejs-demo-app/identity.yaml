@@ -1,0 +1,9 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: NodeJSApplication
+metadata:
+  name: nodejs-demo-app
+spec:
+  nodeVersion: "20"
+  packageManager: npm
+  port: 3000
+  visibility: private
