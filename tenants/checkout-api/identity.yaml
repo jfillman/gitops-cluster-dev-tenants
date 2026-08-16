@@ -1,7 +1,7 @@
 platformIdentity:
   appName: checkout-api
   type: app
-  gitopsRepoUrl: https://github.com/jfillman/gitops-checkout-api.git
-  appRepoUrl: https://github.com/jfillman/checkout-api.git
+  gitopsRepoUrl: https://github.com/jfillman/gitops-checkout-api
+  appRepoUrl: https://github.com/jfillman/checkout-api
   githubOwner: jfillman
   catalogNamespace: platform-catalog

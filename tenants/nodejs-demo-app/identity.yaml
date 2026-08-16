@@ -1,7 +1,7 @@
 platformIdentity:
   appName: nodejs-demo-app
   type: app
-  gitopsRepoUrl: https://github.com/jfillman/gitops-nodejs-demo-app.git
-  appRepoUrl: https://github.com/jfillman/nodejs-demo-app.git
+  gitopsRepoUrl: https://github.com/jfillman/gitops-nodejs-demo-app
+  appRepoUrl: https://github.com/jfillman/nodejs-demo-app
   githubOwner: jfillman
   catalogNamespace: platform-catalog
