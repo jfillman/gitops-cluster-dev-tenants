@@ -11,6 +11,13 @@ This repo only holds the data they read and receive.
 
 ## Layout
 
+**Two files are both named `identity.yaml` but live at different depths and mean
+completely different things — read this before assuming which one a path refers to.**
+`tenants/<app>/identity.yaml` (one level deep) is CICD pipeline onboarding, consumed by
+a *different repo's* ApplicationSet entirely. `tenants/<app>/<env>/identity.yaml` (two
+levels deep) is deployment onboarding, and never actually appears in this repo at all -
+see its own entry below.
+
 ```
 tenants/
   <app-name>/
@@ -30,15 +37,28 @@ tenants/
                          # env) to build that app's AppProject: sourceRepos
                          # [idp-service-catalog, this app's own gitopsRepoUrl],
                          # destinations scoped to app-<appName>-* namespaces on this
-                         # cluster only - appRepoUrl has no consumer in this repo's own
-                         # ApplicationSets, carried for the still-stubbed CICD-onboarding
-                         # step (platform-cicd-on-kind-dev migration) the same way
-                         # platform-cicd's own tenants/<app>/identity.yaml already uses
-                         # its own appRepoUrl (non-optional there) to fetch cicd.yaml
-                         # live from the src repo - same field name, deliberately, to
-                         # minimize friction once that migration lands.
+                         # cluster only.
+    identity.yaml        # platformIdentity: {appName, type, gitopsRepoUrl, appRepoUrl,
+                         # githubOwner, catalogNamespace} - CICD PIPELINE onboarding,
+                         # NOT deployment (see <env>/identity.yaml below for that). Read
+                         # by platform-cicd's OWN tenant-onboarding ApplicationSet
+                         # (a completely different repo/ArgoCD-generator pairing than
+                         # this repo's own three ApplicationSets - platform-cicd's chart
+                         # just happens to read this same commit, via
+                         # .Values.tenantsRepoUrl pointed here) to stand up the app's
+                         # real Tekton pipeline: RBAC, CDEvents Triggers, a build-cache
+                         # PVC. Written by NodeJSApplication's Composition, same commit
+                         # as app.yaml above (idp-service-catalog, 2026-08-16 -
+                         # previously a dedicated platform-cicd-kind-dev-tenants repo,
+                         # eliminated once live history showed it only ever held
+                         # throwaway apps). See
+                         # compositions/nodejsapplication/templates/render-github-
+                         # resources/cicd-identity-yaml.yaml's own header in
+                         # idp-service-catalog for the full reasoning.
     <env>/
-      identity.yaml      # appName, gitopsRepoUrl, githubOwner, env - self-contained,
+      identity.yaml      # appName, gitopsRepoUrl, githubOwner, env - DEPLOYMENT
+                         # onboarding, a completely different file from the one directly
+                         # above despite the identical filename. Self-contained,
                          # deliberately duplicating app.yaml's fields rather than
                          # requiring an ApplicationSet matrix generator to join the two
                          # files. Read by the tenant-onboarding ApplicationSet (one per
@@ -53,12 +73,12 @@ tenants/
                          # Composition, just writing elsewhere.
 ```
 
-`app.yaml` is written by `NodeJSApplication`'s Composition (`idp-service-catalog`,
-`compositions/nodejsapplication/`) — app-level, create-once, same reasoning that XRD
-already uses for creating its `gitops-<app-name>` repo at bootstrap time (see
-`idp/docs/service-catalog-design.md` Item 1/2). `<env>/identity.yaml` is written by
-`ApplicationEnvironment`'s Composition (that XRD doesn't exist yet). Both follow the same
-shape `platform-cicd`'s own `tenants/<app>/identity.yaml` onboarding flow already uses:
+`app.yaml` and `tenants/<app>/identity.yaml` are both written by `NodeJSApplication`'s
+Composition (`idp-service-catalog`, `compositions/nodejsapplication/`), in the same
+commit — app-level, create-once, same reasoning that XRD already uses for creating its
+`gitops-<app-name>` repo at bootstrap time (see `idp/docs/service-catalog-design.md`
+Item 1/2). `<env>/identity.yaml` is written by `ApplicationEnvironment`'s Composition.
+All three follow the same shape `platform-cicd`'s own onboarding flow already uses:
 operator-owned, PR-reviewed (lighter bar than `gitops-cluster-dev` itself), minimal —
 identity and repo URLs only, no live config.
 
@@ -71,6 +91,16 @@ ApplicationSets — real infrastructure, live-verified at the time with a throwa
 `<env>/identity.yaml` is now written for real by `ApplicationEnvironment` (built
 2026-08-15, see `idp-service-catalog/xrds/applicationenvironment.yaml`) — matches
 the shape documented above exactly (`appName`/`gitopsRepoUrl`/`githubOwner`/`env`).
+
+**`tenants/<app>/identity.yaml` (CICD onboarding) added 2026-08-16.** Previously
+`NodeJSApplication` committed this file into a dedicated `platform-cicd-kind-dev-
+tenants` repo instead - eliminated once live history showed that repo only ever held
+throwaway verification apps and both `platform-cicd/docs/onboarding.md` and
+`idp/README.md` confirmed `kind-dev`'s platform-cicd instance is idp-exclusive (unlike
+`kind-observe`, which hosts real, independent, non-idp tenants and keeps its own
+separate tenants list). `idp-service-catalog` v0.3.5, `platform-cicd`'s own
+`hack/values-kind-dev.yaml` repointed to match - end-to-end live verification with a
+throwaway app pending.
 
 **`xr-requests/` — built and live-verified 2026-08-15** (`idp/docs/
 service-catalog-design.md` §0). A real throwaway app (`xr-onboarding-verify`) onboarded
