@@ -99,8 +99,13 @@ throwaway verification apps and both `platform-cicd/docs/onboarding.md` and
 `idp/README.md` confirmed `kind-dev`'s platform-cicd instance is idp-exclusive (unlike
 `kind-observe`, which hosts real, independent, non-idp tenants and keeps its own
 separate tenants list). `idp-service-catalog` v0.3.5, `platform-cicd`'s own
-`hack/values-kind-dev.yaml` repointed to match - end-to-end live verification with a
-throwaway app pending.
+`hack/values-kind-dev.yaml` repointed to match - end-to-end live-verified with a
+throwaway app (`cicd-redirect-verify`, onboarded via a real `NodeJSApplication` XR
+through `xr-requests/`, not a manual commit): `identity.yaml` landed here alongside
+`app.yaml` in the same commit, `CicdOnboarded` flipped `True`, platform-cicd's
+`tenant-onboarding` ApplicationSet in the `argocd` namespace picked it up from this repo
+and stood up the real `cicd-redirect-verify-cicd` Application (RBAC, ExternalSecret,
+build-cache PVC, ConfigMaps all correctly named). Torn down after.
 
 **`xr-requests/` — built and live-verified 2026-08-15** (`idp/docs/
 service-catalog-design.md` §0). A real throwaway app (`xr-onboarding-verify`) onboarded
