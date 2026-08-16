@@ -1,0 +1,4 @@
+appName: checkout-api
+gitopsRepoUrl: https://github.com/jfillman/gitops-checkout-api.git
+appRepoUrl: https://github.com/jfillman/checkout-api.git
+githubOwner: jfillman
