@@ -1,4 +1,0 @@
-appName: cicd-wiring-verify
-gitopsRepoUrl: https://github.com/jfillman/gitops-cicd-wiring-verify.git
-appRepoUrl: https://github.com/jfillman/cicd-wiring-verify.git
-githubOwner: jfillman
