@@ -1,0 +1,8 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: ApplicationEnvironment
+metadata:
+  name: checkout-api-kind-prod-prod
+spec:
+  appName: checkout-api
+  cluster: kind-prod
+  env: prod
