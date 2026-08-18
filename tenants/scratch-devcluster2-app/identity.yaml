@@ -1,7 +1,0 @@
-platformIdentity:
-  appName: scratch-devcluster2-app
-  type: app
-  gitopsRepoUrl: https://github.com/jfillman/gitops-scratch-devcluster2-app
-  appRepoUrl: https://github.com/jfillman/scratch-devcluster2-app
-  githubOwner: jfillman
-  catalogNamespace: platform-catalog
