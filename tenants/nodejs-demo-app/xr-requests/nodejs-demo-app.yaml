@@ -3,6 +3,7 @@ kind: NodeJSApplication
 metadata:
   name: nodejs-demo-app
 spec:
+  devCluster: kind-dev
   nodeVersion: "20"
   packageManager: npm
   port: 3000
