@@ -1,4 +1,0 @@
-appName: nodejs-demo-app
-gitopsRepoUrl: https://github.com/jfillman/gitops-nodejs-demo-app.git
-appRepoUrl: https://github.com/jfillman/nodejs-demo-app.git
-githubOwner: jfillman
