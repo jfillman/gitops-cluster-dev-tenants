@@ -6,3 +6,4 @@ spec:
   appName: checkout-api
   cluster: kind-prod
   env: prod
+  configMapGenerator: true
