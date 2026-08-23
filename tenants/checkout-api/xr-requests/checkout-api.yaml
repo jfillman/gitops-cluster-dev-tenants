@@ -7,4 +7,4 @@ spec:
   nodeVersion: "20"
   packageManager: npm
   port: 3000
-  visibility: private
+  visibility: public
