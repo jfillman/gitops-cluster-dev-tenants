@@ -1,0 +1,7 @@
+platformIdentity:
+  appName: order-api
+  type: app
+  gitopsRepoUrl: https://github.com/jfillman/gitops-order-api
+  appRepoUrl: https://github.com/jfillman/order-api
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
