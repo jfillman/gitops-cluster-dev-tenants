@@ -1,0 +1,11 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: SpringBootApplication
+metadata:
+  name: order-api
+spec:
+  devCluster: kind-dev
+  javaVersion: "21"
+  buildTool: maven
+  groupId: io.idp.apps
+  port: 8080
+  visibility: public
