@@ -6,4 +6,4 @@ spec:
   appName: order-api
   cluster: kind-prod
   env: prod
-  configMapGenerator: true
+  configMapGenerator: false
