@@ -1,0 +1,7 @@
+platformIdentity:
+  appName: process-api
+  type: app
+  gitopsRepoUrl: https://github.com/jfillman/gitops-process-api
+  appRepoUrl: https://github.com/jfillman/process-api
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
