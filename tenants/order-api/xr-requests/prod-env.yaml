@@ -1,0 +1,9 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: ApplicationEnvironment
+metadata:
+  name: order-api-kind-prod-prod
+spec:
+  appName: order-api
+  cluster: kind-prod
+  env: prod
+  configMapGenerator: true
