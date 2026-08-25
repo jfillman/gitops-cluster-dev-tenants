@@ -1,0 +1,7 @@
+platformIdentity:
+  appName: search-api
+  type: app
+  gitopsRepoUrl: https://github.com/jfillman/gitops-search-api
+  appRepoUrl: https://github.com/jfillman/search-api
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
