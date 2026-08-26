@@ -1,0 +1,17 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: NodeJSApplication
+metadata:
+  name: backstage
+spec:
+  devCluster: kind-dev
+  description: >-
+    Backstage developer portal for the IDP - upstream Backstage (not Red Hat Developer
+    Hub, see idp/docs/backstage-design.md), deployed on kind-man, reaching kind-dev and
+    kind-prod. This onboarding is for CI (build+publish the image) only - deployment is
+    hand-managed in gitops-cluster-template's 60-backstage/ tier, not through the usual
+    ApplicationEnvironment promotion flow, since Backstage is a singleton platform
+    component on its own cluster rather than a normal per-env tenant app.
+  nodeVersion: "22"
+  packageManager: npm
+  port: 7007
+  visibility: private
