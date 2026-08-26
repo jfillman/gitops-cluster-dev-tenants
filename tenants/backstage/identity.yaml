@@ -1,0 +1,7 @@
+platformIdentity:
+  appName: backstage
+  type: app
+  gitopsRepoUrl: https://github.com/jfillman/gitops-backstage
+  appRepoUrl: https://github.com/jfillman/backstage
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
