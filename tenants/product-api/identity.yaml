@@ -1,0 +1,7 @@
+platformIdentity:
+  appName: product-api
+  type: app
+  gitopsRepoUrl: https://github.com/jfillman/gitops-product-api
+  appRepoUrl: https://github.com/jfillman/product-api
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
