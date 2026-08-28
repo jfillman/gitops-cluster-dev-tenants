@@ -7,6 +7,14 @@ metadata:
     terasky.backstage.io/owner: group:default/jfillman
     terasky.backstage.io/system: app-product-api-cicd
     terasky.backstage.io/source-file-url: https://github.com/jfillman/gitops-cluster-dev-tenants/blob/main/tenants/product-api/xr-requests/nodejsapplication.yaml/product-api.yaml
+    terasky.backstage.io/title: Product API
+    terasky.backstage.io/description: Product catalog and pricing service for the storefront.
+    terasky.backstage.io/lifecycle: production
+    terasky.backstage.io/backstage-tags: 'team:commerce,language:nodejs'
+    terasky.backstage.io/links: >-
+      [{"url":"https://github.com/jfillman/product-api","title":"Source Repository","icon":"github","type":"source"},
+       {"url":"https://github.com/jfillman/product-api/blob/main/README.md","title":"README","icon":"docs","type":"documentation"}]
+    terasky.backstage.io/component-annotations: 'slack-channel=#product-api,pagerduty-id=PXXXXXX'
   name: product-api
   namespace: app-product-api-cicd
 spec:
