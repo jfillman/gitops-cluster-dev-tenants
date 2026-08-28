@@ -1,0 +1,20 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: NodeJSApplication
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=jfillman&repo=gitops-cluster-dev-tenants","gitLayout":"custom","basePath":""}'
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/jfillman
+    terasky.backstage.io/system: app-product-api-cicd
+    terasky.backstage.io/source-file-url: https://github.com/jfillman/gitops-cluster-dev-tenants/blob/main/tenants/product-api/xr-requests/nodejsapplication.yaml/product-api.yaml
+  name: product-api
+  namespace: app-product-api-cicd
+spec:
+  description: Provide Product Info
+  devCluster: kind-dev
+  nodeVersion: '20'
+  packageManager: npm
+  port: 8080
+  visibility: private
+  crossplane:
+    compositionUpdatePolicy: Automatic
