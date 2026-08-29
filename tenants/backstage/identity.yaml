@@ -5,3 +5,5 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/backstage
   githubOwner: jfillman
   catalogNamespace: platform-catalog
+  extraGitopsRepos:
+    - https://github.com/jfillman/gitops-cluster-kind-man
