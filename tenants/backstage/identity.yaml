@@ -5,3 +5,11 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/backstage
   githubOwner: jfillman
   catalogNamespace: platform-catalog
+  # Backstage's own deploy target isn't gitops-backstage (unused for deploys - it's a
+  # hand-deployed singleton on kind-man, see idp/docs/backstage-design.md) - it's
+  # gitops-cluster-kind-man's 60-backstage/backstage/deployment.yaml. Grants the
+  # gitops-image-bump stage (backstage/cicd.yaml) write access to that repo via an
+  # extra Repository CR - see platform-cicd-app's repository.yaml/values.yaml for why
+  # this lives here (operator-granted) rather than in backstage's own cicd.yaml.
+  extraGitopsRepos:
+    - https://github.com/jfillman/gitops-cluster-kind-man
