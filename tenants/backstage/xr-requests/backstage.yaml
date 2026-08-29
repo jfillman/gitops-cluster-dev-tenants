@@ -11,3 +11,10 @@ spec:
   packageManager: npm
   port: 7007
   visibility: private
+  # Backstage's deploy target isn't gitops-backstage (unused for deploys) - it's
+  # gitops-cluster-kind-man's 60-backstage/backstage/deployment.yaml, see this app's
+  # own cicd.yaml. Grants that gitops-image-bump stage write access via an extra
+  # Repository CR in tenants/backstage/identity.yaml (rendered by the composed
+  # TektonCICD child, not hand-edited - see xrds/tektoncicd.yaml).
+  extraGitopsRepos:
+    - https://github.com/jfillman/gitops-cluster-kind-man
