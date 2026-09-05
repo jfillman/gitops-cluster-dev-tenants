@@ -6,4 +6,4 @@ platformIdentity:
   githubOwner: jfillman
   catalogNamespace: platform-catalog
   extraGitopsRepos:
-    - https://github.com/jfillman/gitops-cluster-kind-man
+    - https://github.com/jfillman/gitops-cluster-kind-prod
