@@ -2,6 +2,10 @@ apiVersion: catalog.idp.io/v1alpha1
 kind: SpringBootApplication
 metadata:
   name: order-api
+  annotations:
+    # tekton.dev/cicd - see checkout-api's own xr-requests/checkout-api.yaml for the
+    # full rationale (same mechanism, no other annotation needed alongside it).
+    tekton.dev/cicd: "true"
 spec:
   devCluster: kind-dev
   javaVersion: "21"

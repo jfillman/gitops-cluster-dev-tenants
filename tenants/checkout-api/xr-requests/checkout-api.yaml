@@ -2,6 +2,19 @@ apiVersion: catalog.idp.io/v1alpha1
 kind: NodeJSApplication
 metadata:
   name: checkout-api
+  annotations:
+    # tekton.dev/cicd (2026-09-05): enables the Backstage Tekton plugin's tab for
+    # this app's Component entity. No kubernetes-namespace/kubernetes-label-selector
+    # annotation needed alongside it - kubernetes-ingestor's own idp-platform patch
+    # already computes backstage.io/kubernetes-label-selector: platform.io/app=checkout-api
+    # unconditionally for every XR-derived entity (EntityProvider.cjs.js's
+    # translateCrossplaneCompositeToEntity), the same selector platform-cicd's
+    # PipelineRuns were just labeled with (flow-triggers.yaml, deliver-onboarding-
+    # files.yaml, onboarding-templates/gitops-repo/*.yaml). This raw annotation
+    # passes straight through onto the generated entity (confirmed by reading that
+    # same function's entity-assembly code - every non-terasky.backstage.io/-prefixed
+    # annotation on this XR is copied verbatim).
+    tekton.dev/cicd: "true"
 spec:
   devCluster: kind-dev
   nodeVersion: "20"
