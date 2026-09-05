@@ -17,4 +17,4 @@ spec:
   # Repository CR in tenants/backstage/identity.yaml (rendered by the composed
   # TektonCICD child, not hand-edited - see xrds/tektoncicd.yaml).
   extraGitopsRepos:
-    - https://github.com/jfillman/gitops-cluster-kind-man
+    - https://github.com/jfillman/gitops-cluster-kind-prod
