@@ -1,0 +1,18 @@
+apiVersion: catalog.idp.io/v1alpha1
+kind: ApplicationEnvironment
+metadata:
+  annotations:
+    terasky.backstage.io/source-info: '{"pushToGit":true,"gitBranch":"main","gitRepo":"github.com?owner=jfillman&repo=gitops-cluster-dev-tenants","gitLayout":"custom","basePath":""}'
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/jfillman
+    terasky.backstage.io/system: app-order-api-cicd
+    terasky.backstage.io/source-file-url: https://github.com/jfillman/gitops-cluster-dev-tenants/blob/main/tenants/order-api-kind-prod-pre-prod/xr-requests/applicationenvironment.yaml/order-api-kind-prod-pre-prod.yaml
+  name: order-api-kind-prod-pre-prod
+  namespace: app-order-api-cicd
+spec:
+  appName: order-api
+  cluster: kind-prod
+  configMapGenerator: false
+  env: pre-prod
+  crossplane:
+    compositionUpdatePolicy: Automatic
