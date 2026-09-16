@@ -8,7 +8,6 @@ metadata:
     terasky.backstage.io/system: app-order-api-cicd
     terasky.backstage.io/source-file-url: https://github.com/jfillman/gitops-cluster-dev-tenants/blob/main/tenants/order-api-kind-prod-pre-prod/xr-requests/applicationenvironment.yaml/order-api-kind-prod-pre-prod.yaml
   name: order-api-kind-prod-pre-prod
-  namespace: app-order-api-cicd
 spec:
   appName: order-api
   cluster: kind-prod
