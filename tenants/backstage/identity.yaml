@@ -5,5 +5,6 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/backstage
   githubOwner: jfillman
   catalogNamespace: platform-catalog
+  registerPipelinesAsCode: true
   extraGitopsRepos:
     - https://github.com/jfillman/gitops-cluster-kind-prod
