@@ -5,3 +5,4 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/nodejs-demo-app
   githubOwner: jfillman
   catalogNamespace: platform-catalog
+  registerPipelinesAsCode: true
