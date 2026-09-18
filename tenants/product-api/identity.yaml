@@ -5,4 +5,3 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/product-api
   githubOwner: jfillman
   catalogNamespace: platform-catalog
-  registerPipelinesAsCode: true
