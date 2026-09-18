@@ -5,3 +5,4 @@ platformIdentity:
   appRepoUrl: https://github.com/jfillman/order-api
   githubOwner: jfillman
   catalogNamespace: platform-catalog
+  registerPipelinesAsCode: true
