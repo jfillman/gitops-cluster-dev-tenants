@@ -1,0 +1,8 @@
+platformIdentity:
+  appName: infra-onboarding-verify
+  type: infra
+  gitopsRepoUrl: https://github.com/jfillman/gitops-infra-infra-onboarding-verify
+  appRepoUrl: https://github.com/jfillman/gitops-infra-infra-onboarding-verify
+  githubOwner: jfillman
+  catalogNamespace: platform-catalog
+  registerPipelinesAsCode: false
